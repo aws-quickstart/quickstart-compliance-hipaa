@@ -687,15 +687,12 @@ Resources:
             /tmp/nginx/default.conf:
               content: !Sub |
                 server {
-                    listen 80;
+                    listen       80 default_server;
+                    listen       [::]:80 default_server;
                     charset utf-8;
                     location / {
                         resolver xxxxx;
-                        set $elb 'https://${rELBApp.DNSName}';
-                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                        proxy_set_header Host $http_host;
-                        proxy_redirect off;
-                        proxy_pass $elb;
+                        return 301 https://$host$request_uri;
                     }
                 }
                 server {
@@ -852,7 +849,7 @@ Resources:
       - Name: AutoScalingGroupName
         Value: !Ref rAutoScalingGroupWeb
       ComparisonOperator: GreaterThanThreshold
-      MetricName: WebServerCpuHighUtilization
+      MetricName: CPUUtilization
   rCWAlarmLowCPUWeb:
     Type: AWS::CloudWatch::Alarm
     DependsOn: rAutoScalingGroupWeb
@@ -869,7 +866,7 @@ Resources:
       - Name: AutoScalingGroupName
         Value: !Ref rAutoScalingGroupWeb
       ComparisonOperator: LessThanThreshold
-      MetricName: WebServerCpuLowUtilization
+      MetricName: CPUUtilization
   rAppInstanceRole:
     Type: AWS::IAM::Role
     Properties:
@@ -1170,7 +1167,7 @@ Resources:
       - Name: AutoScalingGroupName
         Value: !Ref rAutoScalingGroupApp
       ComparisonOperator: GreaterThanThreshold
-      MetricName: AppServerCpuHighUtilization
+      MetricName: CPUUtilization
   rCWAlarmLowCPUApp:
     Type: AWS::CloudWatch::Alarm
     Properties:
@@ -1186,7 +1183,7 @@ Resources:
       - Name: AutoScalingGroupName
         Value: !Ref rAutoScalingGroupApp
       ComparisonOperator: LessThanThreshold
-      MetricName: AppServerCpuLowUtilization
+      MetricName: CPUUtilization
   rPostProcInstanceRole:
     Type: AWS::IAM::Role
     Properties:

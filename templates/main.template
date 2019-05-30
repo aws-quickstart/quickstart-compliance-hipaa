@@ -338,7 +338,7 @@ Resources:
           - !Ref AWS::Region
           - InstanceType
         QSS3BucketName: !Ref QSS3BucketName
-        QSS3KeyPrefix: !Sub ${QSS3KeyPrefix}submodules/quickstart-compliance-common/
+        QSS3KeyPrefix: !Ref QSS3KeyPrefix
   ManagementVpcTemplate:
     Type: AWS::CloudFormation::Stack
     DependsOn: ProductionVpcTemplate
@@ -409,7 +409,7 @@ Resources:
           - !Ref AWS::Region
           - InstanceType
         QSS3BucketName: !Ref QSS3BucketName
-        QSS3KeyPrefix: !Sub ${QSS3KeyPrefix}submodules/quickstart-compliance-common/
+        QSS3KeyPrefix: !Ref QSS3KeyPrefix
   ConfigRulesTemplate:
     Type: AWS::CloudFormation::Stack
     Condition: LoadConfigRulesTemplate

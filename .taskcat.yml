@@ -69,4 +69,4 @@ tests:
     - eu-west-3
     - eu-north-1
     - sa-east-1
-    template: templates/main-stack.template.yaml
+    template: templates/compliance-hipaa-entrypoint.template.yaml

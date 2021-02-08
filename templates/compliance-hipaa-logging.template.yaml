@@ -5,7 +5,7 @@ Metadata:
   LintSpellExclude:
     - CloudWatch
     - CloudTrail
-  cfn-lint: { config: { ignore_checks: [ W9101 ] } }
+  cfn-lint: { config: { ignore_checks: [ W9101, E9101, W3011 ] } }
   Identifier:
     Value: main
   Input:
@@ -51,6 +51,8 @@ Parameters:
     Description: CloudTrail log group retention days.
 Resources:
   AWSLoggingBucket:
+    Metadata:
+      cfn-lint: { config: { ignore_checks: [ W3011 ] } }
     Type: 'AWS::S3::Bucket'
     DeletionPolicy: Retain
     Properties:

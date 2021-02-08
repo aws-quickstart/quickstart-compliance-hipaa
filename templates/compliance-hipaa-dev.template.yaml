@@ -114,7 +114,7 @@ Resources:
     Properties:
       CidrBlock: !Ref DevVPCSubnet1
       VpcId: !Ref DevVPC
-      AvailabilityZone: !Select [ 0, !GetAZs ]
+      AvailabilityZone: !Select [ 0, !GetAZs "" ]
       MapPublicIpOnLaunch: false
       Tags:
         - Key: Name
@@ -126,7 +126,7 @@ Resources:
     Properties:
       CidrBlock: !Ref DevVPCSubnet2
       VpcId: !Ref DevVPC
-      AvailabilityZone: !Select [ 1, !GetAZs ]
+      AvailabilityZone: !Select [ 1, !GetAZs "" ]
       MapPublicIpOnLaunch: false
       Tags:
         - Key: Name

@@ -116,14 +116,12 @@ Resources:
           Value: Management VPC Flow Logs
         - Key: Purpose
           Value: Networking
-    DependsOn:
-      - ManagementVPCFlowLogGroup
   ManagementDMZSubnet1:
     Type: 'AWS::EC2::Subnet'
     Properties:
       CidrBlock: !Ref MgmtVPCPublicSubnet1
       VpcId: !Ref ManagementVPC
-      AvailabilityZone: !Select [ 0, !GetAZs ]
+      AvailabilityZone: !Select [ 0, !GetAZs "" ]
       MapPublicIpOnLaunch: true
       Tags:
         - Key: Name
@@ -135,7 +133,7 @@ Resources:
     Properties:
       CidrBlock: !Ref MgmtVPCPublicSubnet2
       VpcId: !Ref ManagementVPC
-      AvailabilityZone: !Select [ 1, !GetAZs ]
+      AvailabilityZone: !Select [ 1, !GetAZs "" ]
       MapPublicIpOnLaunch: true
       Tags:
         - Key: Name
@@ -147,7 +145,7 @@ Resources:
     Properties:
       CidrBlock: !Ref MgmtVPCPrivateSubnet1
       VpcId: !Ref ManagementVPC
-      AvailabilityZone: !Select [ 0, !GetAZs ]
+      AvailabilityZone: !Select [ 0, !GetAZs "" ]
       MapPublicIpOnLaunch: false
       Tags:
         - Key: Name
@@ -159,7 +157,7 @@ Resources:
     Properties:
       CidrBlock: !Ref MgmtVPCPrivateSubnet2
       VpcId: !Ref ManagementVPC
-      AvailabilityZone: !Select [ 1, !GetAZs ]
+      AvailabilityZone: !Select [ 1, !GetAZs "" ]
       MapPublicIpOnLaunch: false
       Tags:
         - Key: Name

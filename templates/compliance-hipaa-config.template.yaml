@@ -8,6 +8,7 @@ Metadata:
     Description: Input of all required parameters in nested stacks
   Output:
     Description: N/A
+  cfn-lint: { config: { ignore_checks: [ W3011 ] } }
   AWS::CloudFormation::Interface:
     ParameterGroups:
     - Label:

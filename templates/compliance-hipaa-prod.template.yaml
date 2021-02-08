@@ -107,14 +107,12 @@ Resources:
           Value: Production VPC Flow Logs
         - Key: Purpose
           Value: Networking
-    DependsOn:
-      - ProductionVPCFlowLogGroup
   ProductionCoreSubnet1:
     Type: 'AWS::EC2::Subnet'
     Properties:
       CidrBlock: !Ref ProdVPCSubnet1
       VpcId: !Ref ProductionVPC
-      AvailabilityZone: !Select [ 0, !GetAZs ]
+      AvailabilityZone: !Select [ 0, !GetAZs "" ]
       MapPublicIpOnLaunch: false
       Tags:
         - Key: Name
@@ -126,7 +124,7 @@ Resources:
     Properties:
       CidrBlock: !Ref ProdVPCSubnet2
       VpcId: !Ref ProductionVPC
-      AvailabilityZone: !Select [ 1, !GetAZs ]
+      AvailabilityZone: !Select [ 1, !GetAZs "" ]
       MapPublicIpOnLaunch: false
       Tags:
         - Key: Name

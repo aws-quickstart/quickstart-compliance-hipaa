@@ -107,8 +107,6 @@ Resources:
           Value: Development VPC Flow Logs
         - Key: Purpose
           Value: Networking
-    DependsOn:
-      - DevelopmentVPCFlowLogGroup
   DevCoreSubnet1:
     Type: 'AWS::EC2::Subnet'
     Properties:

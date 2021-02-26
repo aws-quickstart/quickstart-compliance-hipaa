@@ -1,5 +1,3 @@
-general:
-  s3_regional_buckets: true
 project:
   name: quickstart-compliance-hipaa
   owner: quickstart-eng@amazon.com

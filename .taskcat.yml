@@ -8,6 +8,8 @@ project:
   parameters:
     AWSConfigARN: overridden
     SNSAlarmEmail: overridden
+    CreateConfigRecorder: Yes
+    CreateConfigDeliveryChannel: Yes
     DevVPCFlowLogLogGroup: dev-flow-logs-group
     ProdVPCFlowLogLogGroup: prod-flow-logs-group
     MgmtVPCFlowLogLogGroup: mgmt-flow-logs-group
@@ -31,7 +33,7 @@ tests:
     - eu-west-1
     - eu-west-2
     - eu-west-3
-    # Invalid or unsupported Type AWS::EC2::TransitGatewayRoute for
+#    # Invalid or unsupported Type AWS::EC2::TransitGatewayRoute for
     # resource TransitGatewayExternalRoute1 in eu-north-1
     #- eu-north-1
     - sa-east-1

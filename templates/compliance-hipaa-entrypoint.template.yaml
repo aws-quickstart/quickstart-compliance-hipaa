@@ -116,6 +116,7 @@ Parameters:
     Type: String
     Default: ''
     Description: AWS config service linked role ARN.
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
   LifecycleExpirationDays:
     Type: Number
     Default: 2555
@@ -132,6 +133,7 @@ Parameters:
     Type: String
     Default: ''
     Description: SNS security alarm email.
+    AllowedPattern: '/[^\s@]+@[^\s@]+\.[^\s@]+/'
   CloudTrailLogRetentionDays:
     Type: Number
     Default: 90
